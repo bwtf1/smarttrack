@@ -192,13 +192,6 @@ This launches the interactive monitoring dashboard where the user can:
 - monitor live tracking results
 - analyze sessions and output statistics
 
-## Default Application Credentials
-
-The application includes demo login accounts for testing:
-
-- Username: `admin`  Password: `Admin@123`
-- Username: `user`   Password: `User@123`
-
 ## Working Methodology
 
 SmartTrack follows a standard deep learning-based computer vision pipeline:
