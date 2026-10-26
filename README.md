@@ -1,193 +1,299 @@
-# SmartTrack: Detect, Identify, Track
+# SmartTrack: Real-Time Object Detection and Tracking
 
-### Real-Time Object Detection and Multi-Object Tracking
+## Project Overview
 
-SmartTrack is a computer vision project designed to detect and track multiple objects in video frames. It uses a pre-trained YOLO model for object detection and a tracking algorithm such as SORT or Deep SORT to maintain object identities across consecutive frames.
+SmartTrack is a Python-based computer vision system designed to detect, identify, and track multiple objects in real time from live camera feeds or recorded video sources. The project uses modern deep learning techniques for object detection and tracking, with a focus on real-world monitoring applications such as traffic analysis, campus surveillance, security systems, and general-purpose object tracking.
 
-## Project Information
+The system combines YOLOv8 for object detection and DeepSORT for multi-object tracking, enabling persistent object identities across consecutive frames. It also provides a user-friendly interface and analytics dashboard for monitoring results efficiently.
 
-- **Project Name:** SmartTrack: Detect, Identify, Track
-- **Project Title:** Real-Time Object Detection and Multi-Object Tracking
-- **Group Name:** TECH ELITE
-- **Group Number:** 4
-- **Department:** Computer Science and Engineering (Artificial Intelligence and Machine Learning)
-- **Institution:** ITS Engineering College
-- **Academic Year:** 2026–2027
-- **Faculty Guide:** **Ms. Anjali Srivastava**
+## Project Title
+
+SmartTrack: Detect, Identify, Track
+
+## Institution
+
+ITS Engineering College
+
+## Department
+
+Computer Science and Engineering (Artificial Intelligence and Machine Learning)
+
+## Faculty Guide
+
+Anjali Shrivastav
 
 ## Team Members
 
-| S. No. | Team Member Name | Roll Number |
-|---|---|---|
-| 1 | Rishav Raj | 2402221530102 |
-| 2 | Rahul Raj Yadav | 2402221530096 |
-| 3 | Shashank Kumar | 2402221530116 |
-| 4 | Ravi Kumar Singh | 2402221530098 |
+- Shashank Kumar
+- Ravi Kumar Singh
+- Rishav Raj
+- Rahul Raj
+
+## Abstract
+
+The increasing demand for intelligent monitoring systems has led to the growth of computer vision-based solutions for object detection and tracking. Traditional surveillance often relies on manual observation, which is inefficient, time-consuming, and highly prone to error. SmartTrack addresses this limitation by automating the detection of objects and maintaining their identities across video frames in real time.
+
+This project implements a robust object tracking workflow that captures frames from a webcam or uploaded videos, detects objects using a pretrained YOLO model, and tracks them using a deep learning-based tracking algorithm. The system highlights detected objects using bounding boxes, labels, and unique tracking IDs, making it suitable for use in traffic monitoring, pedestrian tracking, object counting, and monitoring-related applications.
 
 ## Problem Statement
 
-Manual monitoring of video feeds in traffic, campus, retail, and security environments is time-consuming and prone to human error. Detecting objects in individual frames does not maintain their identities across time. Without persistent tracking IDs, the same object may be counted multiple times, making movement analysis difficult.
+Monitoring dynamic scenes manually is an effort-intensive task and is often inaccurate when the environment is crowded or fast-moving. Many surveillance and monitoring systems require continuous human attention to identify and track objects across multiple frames. This leads to reduced efficiency, increased workload, and missed observations.
 
-SmartTrack aims to combine object detection and multi-object tracking to identify objects and maintain their identities across consecutive video frames.
+SmartTrack aims to automate this process by detecting and tracking objects in real time, thereby reducing the need for continuous manual monitoring and improving decision-making through real-time insights.
 
 ## Objectives
 
-- Capture video from a webcam or video file using OpenCV.
-- Detect objects using a pre-trained YOLO model.
-- Track multiple objects using SORT or Deep SORT.
-- Display bounding boxes, class labels, confidence scores, and tracking IDs.
-- Display the processing frame rate (FPS), where implemented.
-- Support optional object counting, movement trails, video saving, and CSV logging.
+The primary objectives of the project are:
+
+- To develop a real-time object detection and tracking system.
+- To integrate a deep learning-based detector with a multi-object tracker.
+- To detect and classify common objects from live or recorded video input.
+- To maintain persistent object identities across frames.
+- To present the results using bounding boxes, class labels, tracking IDs, and FPS information.
+- To provide a user-friendly dashboard for monitoring and analysis.
+- To make the system adaptable for further enhancement in surveillance and analytics applications.
+
+## Scope of the Project
+
+SmartTrack can be used in multiple domains, including:
+
+- traffic monitoring and vehicle tracking
+- pedestrian detection and movement analysis
+- surveillance systems
+- smart campus monitoring
+- retail and crowd analysis
+- general-purpose object detection systems
 
 ## Key Features
 
-The project blueprint describes these intended features; their availability depends on the actual implementation.
-
-- Webcam and video-file input.
-- Detection of common object categories supported by the COCO-trained model.
-- Bounding boxes and object class labels.
-- Confidence scores for detections.
-- Persistent tracking IDs.
-- FPS monitoring.
-- Optional confidence threshold and class filtering.
-- Optional object counting and movement trails.
-- Optional saving of annotated videos and detection logs.
+- Real-time video input from webcam or uploaded video files
+- Object detection using YOLOv8
+- Multi-object tracking with persistent IDs
+- Bounding boxes and labels for each tracked object
+- Class filtering to monitor selected categories
+- FPS monitoring for performance evaluation
+- Dashboard-based interface for seamless interaction
+- Analytics and reporting support for session results
+- Compatibility with modern Python-based computer vision workflows
 
 ## Technology Stack
 
-| Technology | Purpose |
-|---|---|
-| Python | Main programming language |
-| OpenCV | Video capture and frame processing |
-| YOLOv8 | Object detection |
-| PyTorch | Deep learning framework |
-| SORT / Deep SORT | Multi-object tracking |
-| NumPy | Numerical processing |
-| SciPy and FilterPy | Supporting libraries for SORT, if used |
-| deep-sort-realtime | Supporting library for Deep SORT, if used |
-| Streamlit / Tkinter | Optional user interface |
+| Component | Technology |
+| --- | --- |
+| Programming Language | Python |
+| Computer Vision | OpenCV |
+| Object Detection | YOLOv8 |
+| Deep Learning Framework | PyTorch |
+| Multi-Object Tracking | DeepSORT |
+| Visualization | OpenCV / Streamlit |
+| Data Handling | NumPy, Pandas |
+| Frontend / Dashboard | Streamlit |
 
-## System Workflow
+## System Architecture
 
-1. Capture video from a webcam or video file.
-2. Read and prepare video frames using OpenCV.
-3. Detect objects using the YOLO model.
-4. Filter detections using confidence thresholds and non-maximum suppression.
-5. Associate detections across frames using SORT or Deep SORT.
-6. Assign and maintain tracking IDs.
-7. Display annotated frames with bounding boxes, labels, and IDs.
-8. Save output video or detection logs if those features are implemented.
+The workflow of SmartTrack is divided into the following stages:
 
-**Workflow:** Video Input → OpenCV → YOLO Detection → Detection Filtering → Object Tracking → Annotated Video Output
+1. Video input acquisition from webcam or uploaded recording.
+2. Frame preprocessing for consistent analysis.
+3. Object detection using a YOLO-based model.
+4. Filtering of detections based on confidence threshold and selected classes.
+5. Tracking objects across multiple frames using DeepSORT.
+6. Drawing bounding boxes, labels, and IDs over the current frame.
+7. Displaying results in real time and storing relevant analytics.
+
+### High-Level Workflow
+
+Video Input -> Frame Processing -> Object Detection -> Filtering -> Tracking -> Annotation -> Output Dashboard
+
+## Repository Structure
+
+```text
+smarttrack/
+├── app.py                 # Main dashboard / web interface
+├── main.py                # Real-time detection and tracking runner
+├── detector.py            # YOLOv8-based detection logic
+├── tracker.py             # DeepSORT tracking logic
+├── utils.py               # Visualization and helper functions
+├── data/                  # Project data and output directory
+├── .streamlit/            # Streamlit configuration files
+├── home_bg.png            # Dashboard background image
+├── tracking_bg.png        # Tracking UI background image
+├── yolov8n.pt             # YOLOv8 model file
+├── README.md              # Project documentation
+├── .yolov8s.pt...part     # Temporary model-download artifact
+└── ...
+```
+
+## Software Requirements
+
+The project is designed for the following environment:
+
+- Python 3.9 or later
+- Windows, Linux, or macOS
+- Webcam or recorded video input
+- GPU support recommended for better performance, though CPU execution is supported
 
 ## Installation
 
-Install Python 3.9 or later.
-
-Create and activate a virtual environment.
-
-**Windows Command Prompt:**
-
-```bat
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-Install the required dependencies:
+1. Clone the repository:
 
 ```bash
-pip install ultralytics opencv-python numpy scipy filterpy deep-sort-realtime
+git clone https://github.com/bwtf1/smarttrack.git
+cd smarttrack
 ```
 
-Install only the libraries required by your selected tracker. If the project includes a `requirements.txt` file, you can install dependencies using:
+2. Create a virtual environment:
 
 ```bash
-pip install -r requirements.txt
+python -m venv venv
 ```
+
+On Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+On macOS/Linux:
+
+```bash
+source venv/bin/activate
+```
+
+3. Install the required dependencies:
+
+```bash
+pip install ultralytics opencv-python numpy pandas deep-sort-realtime streamlit
+```
+
+4. Ensure that the YOLO model weight file (`yolov8n.pt`) is available locally or can be downloaded automatically.
 
 ## Running the Project
 
-The command depends on the main Python file in your repository.
-
-For example, if your entry-point file is named `main.py`:
+### 1. Run the real-time detection script
 
 ```bash
 python main.py
 ```
 
+This opens the default webcam, performs detection and tracking, and displays results in a live video window.
 
+### 2. Run the Streamlit dashboard
 
-## Dataset
-
-The basic system uses pre-trained YOLO weights associated with the COCO dataset. Training a model from scratch is not required for detecting the supported classes.
-
-Possible video inputs include:
-
-- Live webcam footage.
-- Recorded traffic videos.
-- Pedestrian and campus videos.
-- Public multi-object tracking datasets such as MOT16 and MOT17 for additional evaluation.
-
-## Evaluation
-
-The system may be evaluated using the following criteria:
-
-- Correctness of object detection.
-- Consistency of tracking IDs across frames.
-- Tracking behaviour when objects overlap or become temporarily hidden.
-- Processing speed measured in FPS.
-- Tracking metrics such as MOTA and IDF1, when suitable ground-truth annotations are available.
-
-The original project blueprint identifies approximately 15–30 FPS as a target. Actual performance depends on the model, hardware, video resolution, and tracking configuration and should be measured during testing.
-
-## Team Work Distribution
-
-- **Rishav Raj — Project Lead:** Environment setup, video input module, module integration, and GitHub management.
-- **Rahul Raj Yadav — Object Detection:** YOLO model loading, inference, confidence filtering, NMS, and detection testing.
-- **Shashank Kumar — Tracking Module:** SORT/Deep SORT integration, ID assignment, and tracking parameter tuning.
-- **Ravi Kumar Singh — Visualization and UI:** Bounding boxes, labels, tracking IDs, FPS display, interface controls, documentation, and report preparation.
-
-Testing, performance evaluation, presentation, and report preparation are shared responsibilities.
-
-## Results and Screenshots
-
-Add screenshots of the actual running application to this section.
-
-Suggested screenshots:
-
-1. Application interface.
-2. Object detection with bounding boxes.
-3. Multiple objects with their tracking IDs.
-4. FPS counter or other implemented functionality.
-
-Example for adding a screenshot stored in the repository:
-
-```markdown
-![SmartTrack Detection Output](screenshots/smarttrack-output.png)
+```bash
+streamlit run app.py
 ```
 
-Ensure the image path matches the actual file in your repository. Only report results that have been verified on the running application.
+This launches the interactive monitoring dashboard where the user can:
 
-## Future Improvements
+- select the input source
+- choose detection confidence
+- filter object classes
+- monitor live tracking results
+- analyze sessions and output statistics
 
-- Improve tracking in crowded environments.
-- Add object-counting and line-crossing analytics.
-- Support saving annotated videos.
-- Export detection logs to CSV.
-- Evaluate tracking using labelled benchmark datasets.
-- Fine-tune the detector for specific object categories if required.
+## Default Application Credentials
 
-## Acknowledgement
+The application includes demo login accounts for testing:
 
-We sincerely thank our faculty guide, **Ms. Anjali Srivastava**, for her guidance and support throughout the SmartTrack project. We also acknowledge the contributions of all members of **TECH ELITE (Group 4)**.
+- Username: `admin`  Password: `Admin@123`
+- Username: `user`   Password: `User@123`
+
+## Working Methodology
+
+SmartTrack follows a standard deep learning-based computer vision pipeline:
+
+1. Input frames are captured either from a webcam or a video source.
+2. The YOLOv8 model detects objects in each frame.
+3. Confidence thresholding removes low-quality predictions.
+4. Detected objects are filtered by the selected class list.
+5. DeepSORT associates objects across frames and assigns tracking IDs.
+6. Bounding boxes and labels are drawn on each frame.
+7. The frame is displayed in real time along with object counts and FPS.
+8. Results can be explored through the dashboard and analytics panels.
+
+## Functional Features
+
+### Object Detection
+
+The detector identifies common objects from the COCO-trained model such as:
+
+- person
+- car
+- bicycle
+- motorcycle
+- bus
+- truck
+- and other supported categories
+
+### Object Tracking
+
+Tracking is performed by assigning each detected object a persistent ID and tracking it across subsequent frames, even when motion changes or there are temporary occlusions.
+
+### Visualization
+
+Detected objects are annotated with:
+
+- bounding boxes
+- object labels
+- tracking IDs
+- FPS overlays
+
+### Analytics and Monitoring
+
+The project includes a monitoring dashboard with analytics such as:
+
+- session summaries
+- object counts
+- FPS measurements
+- class-based insights
+- saved tracking history
+
+## Screenshots
+
+The project UI includes a modern dark-themed dashboard and live monitoring interface. The screenshots below demonstrate the SmartTrack workflow and the real-time tracking experience.
+
+Figure 1: SmartTrack dashboard overview
+
+Figure 2: Real-time live monitoring interface with object detection and tracking overlays
+
+> Add the final screenshots in the project documentation folder or update this section with the exact image paths once screenshots are captured in the repository.
+
+## Use Cases
+
+SmartTrack is suitable for:
+
+- real-time object tracking in urban traffic scenarios
+- student project demonstrations in computer vision
+- intelligent surveillance prototypes
+- campus and public-area monitoring
+- object movement analysis in live streams
+
+## Challenges and Future Enhancements
+
+Although the current implementation provides a robust foundation, several enhancements can further improve the system:
+
+- improved tracking in crowded or densely populated environments
+- real-time counting and line-crossing detection
+- recording of annotated output videos
+- export of CSV logs and analytics reports
+- deployment on embedded or edge devices
+- support for additional object classes and domain-specific models
 
 ## License
 
-No license has been specified for this project. Add an appropriate license file if you intend to distribute the project for reuse.
+No explicit license has been provided for this project. The repository is currently unlicensed.
+
+## Acknowledgement
+
+We express our sincere gratitude to our faculty guide, Anjali Shrivastav, for her guidance, encouragement, and support throughout this project. We also thank ITS Engineering College for providing the platform and academic environment necessary for the successful completion of this work.
+
+## Conclusion
+
+SmartTrack demonstrates the practical application of computer vision and deep learning in solving real-world object detection and tracking challenges. By combining YOLOv8 with a tracking framework, the project provides a reliable and scalable foundation for intelligent monitoring systems. It is a strong academic project that can be extended to advanced surveillance, smart city, and analytics-based applications.
 
 ---
 
-**Developed by:** TECH ELITE — Group 4  
-**Faculty Guide:** Ms. Anjali Srivastava  
-**Institution:** ITS Engineering College  
-**Academic Year:** 2026–2027
+Developed by: SmartTrack Team  
+Institution: ITS Engineering College  
+Faculty Guide: Anjali Shrivastav
