@@ -115,7 +115,7 @@ For example, if your entry-point file is named `main.py`:
 python main.py
 ```
 
-Replace `main.py` with the actual filename used by your project.
+
 
 ## Dataset
 
